@@ -57,6 +57,7 @@ process(state_reg, start, load, cnt_done)
 		result_load	<= '0';
 		ready_next  <= '0';
 		
+		case state_reg is 
 	when s0 =>
 		if load = '1' then
 			state_next <= s1;
@@ -102,11 +103,11 @@ process(state_reg, start, load, cnt_done)
 		else
 			state_next <= s7;
 		end if;
+	when others =>
+		state_next <= s0;
 		
 	end case;
 end process;	
 	ready <= ready_reg;
 end;
-
-
 
